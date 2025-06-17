@@ -8,7 +8,7 @@ The device can be used as a Joystick connected to a PC via USB, transmitting an 
 
 The device transmits a PPM signal with 8 channels onto the TRAINER_PORT pin of the trainer port socket. This signal can be routed to an RC controller operating at Master mode with a two-wire cable.
 
-This article does not intend to be a step-by-step instructable, since you may have to take decisions depending on various parameters, such as the resources you intend to re-use, the capacity of the box to include the new components etc.
+This article does not intend to be a step-by-step instructable, since you may have to take decisions depending on various parameters, such as the resources you intend to re-use, the capacity of the box to include the new components etc. Yet, it exposes several of the design issues in using an Arduino for this purpose.
 
 # History - boring but explains purpose and design decisions
 My original purpose was to buy some joystick pads and a few buttons and build a joystick from scratch. But who can argue that any such custom solution cannot even come close to the perfection and ease of use of the sticks of an existing RC controller. Therefore, I decided to get an old, broken RC controller and utilize its  parts, along with a new MCU.
@@ -104,10 +104,10 @@ I used as basis the PPMEncoder library by Christopher Schirner, version 0.4.0, a
 
 # Schematics
 After all the explanations above, the schematics should be self-explainable.
-	- Potentiometers are wired to the Analog ports of Arduino Nano.
-	- Switches are wired to the ports of the PCF8574 extender and read by Arduino through the I2C channel, using ports SCL and SDA. Pull up resistors are wired to each of the 8 PCF8574 ports. Also, two 4.7K resistors pull-up the SCL and SDA pins.
-	- The functions of switch SW5 appears in the schematic as two switches, SW5-1 and SW5-2, because I could find in the drawing libraries a similar function.
-	- The Interrupt port of PCF8574 is wired to port D2 of the Nano. Yet, the code does not currently make use of the interrupt feature. Perhaps it will be used in the future.
+ - Potentiometers are wired to the Analog ports of Arduino Nano.
+ - Switches are wired to the ports of the PCF8574 extender and read by Arduino through the I2C channel, using ports SCL and SDA. Pull up resistors are wired to each of the 8 PCF8574 ports. Also, two 4.7K resistors pull-up the SCL and SDA pins.
+ - The functions of switch SW5 appears in the schematic as two switches, SW5-1 and SW5-2, because I could find in the drawing libraries a similar function.
+ - The Interrupt port of PCF8574 is wired to port D2 of the Nano. Yet, the code does not currently make use of the interrupt feature. Perhaps it will be used in the future.
 
 There are not enough pins to operate the LCD display. I used another PCF8574A, setting I2C device address to 0x21. The library https://github.com/fryktoria/upd7225 provides the option to control the display via I2C.
 
@@ -117,7 +117,7 @@ There are not enough pins to operate the LCD display. I used another PCF8574A, s
  - I tried to follow as much as possible the natural flow of wiring inside the case. It is not important to attach any switch pin to a specific port, in respect to the pins of PCF8584. The software is perfectly capable to deal with these details.
  - In order to access the USB connector of the Nano inside the case, I used an extension cable, with a male USB mini connector going to the Nano, and a female USB mini socket at the other end. This socket was attached to the case, to be connected to a regular USB cable.
  
- ' - Try to remove as much as possible from unused items to make room for the new board. If it does not fit, you will have to use an external box, although things are becoming clumsy, due to the large number of cables. If possible, break down the schematic to the items that can be multiplexed via I2C, and carry only SDA, SCL and power out of the box to the main board.
+ - Try to remove as much as possible from unused items to make room for the new board. If it does not fit, you will have to use an external box, although things are becoming clumsy, due to the large number of cables. If possible, break down the schematic to the items that can be multiplexed via I2C, and carry only SDA, SCL and power out of the box to the main board.
 
 # Instructions - with LCD
  - Load the sketch.
@@ -127,7 +127,7 @@ There are not enough pins to operate the LCD display. I used another PCF8574A, s
 The software version will appear briefly on the LCD, followed by a "Helo" message (well, only 4 characters are allowed...)
 After a while, the indication "CONF" and a countdown counter will appear. If you press the Up, Down or Clear buttons before the counter reaches zero, the software will enter configuration mode. Otherwise, it will enter normal operation.
 
-Normal operation is indicated by a blinkink colon symbol.
+Normal operation is indicated by a blinking `:` symbol.
 
 ## Configuration mode - LCD
 After you enter configuration mode, you can navigate the menu options via the Up and Down keys. Press Clear to select any of the options.
@@ -168,4 +168,4 @@ This is an old-style, terminal based configuration, where you have to press a ch
  - vJoySerialFeeder is supported under Linux, without vJoy which is Windows specific. Yet, vJoySerialFeeder requires 'mono' to run on Linux. It works, but mono consumes so many CPU resources that is practically unusable, at least in my case when run in a virtual machine.
 
 # Attributions
-The code that may be required to support the operation of this device is included in folder `attributions`, in its original form, both as sources as well as in binaries. A list of this software appears in section [[Software]] above. Please follow the license specifications of each of this software.
+The code that may be required to support the operation of this device is included in folder `attributions`, in its original form, both as sources as well as in binaries. A list of this software appears in section [Software] above. Please follow the license specifications of each of this software.
