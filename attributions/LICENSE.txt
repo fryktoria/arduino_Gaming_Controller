@@ -1,0 +1,7 @@
+Software from external sources is included herein, with the purpose
+of having a complete collection of software that is compatible with each other.
+
+Please check the License specifications of the software.
+
+vJoy 			MIT License 	https://github.com/jshafer817/vJoy
+vJoySerialFeeder 	GNU GPL v3 	https://github.com/Cleric-K/vJoySerialFeeder
