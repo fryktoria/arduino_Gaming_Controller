@@ -88,8 +88,10 @@ Let us examine each element, one by one:
 
 ### The LCD display
  - The original LCD display was found to work fine. Although I did not consider it mandatory for the new design, we need to be able to invert some of the sticks. If we intend to use the joystick for a limited amount of uses or the software that we intend to use the joystick provides it own functionality for inversion, hardwiring could be an acceptable solution. But for using it as a trainee joystick, you need to have more flexibility in configuring the functionality. To use the original display, I had to write my own library. You can find this library in https://github.com/fryktoria/upd7225. You may enable or disable the display code using the pre-processor directive USE_DISPLAY.
+ 
 ### The bluetooth module
  - Before I found that the LCD display was working, I had the idea of setting the configuration parameters using an HC-06 bluetooth module, and to communicate with the Arduino board using a bluetooth terminal application running on a mobile phone. I used the "Serial Bluetooth Terminal" app. You may enable or disable the bluetooth code using the pre-processor directive USE_BLUETOOTH_MODULE.
+ - Since the number of pins is limited, the communication with the bluetooth module is performed via the SoftwareSerial library, using two pins that are used for reading the keyboard in normal operation. Since the two stages of operation are totally distinct in time, there is no conflict.
 
 
 ### Software
@@ -103,6 +105,10 @@ I originally planned to use an Arduino Pro Micro, having an ATMega 32u4 MCU, whi
 I used as basis the PPMEncoder library by Christopher Schirner, version 0.4.0, available at https://github.com/schinken/PPMEncoder. I had to make several modifications, therefore the altered code is included in the final, not as a library but as independent source files.
 
 # Schematics
+The schematics for this project are in folder `./schematics`. The main board is:
+
+ ![](./schematics/sheet1.png).
+
 After all the explanations above, the schematics should be self-explainable.
  - Potentiometers are wired to the Analog ports of Arduino Nano.
  - Switches are wired to the ports of the PCF8574 extender and read by Arduino through the I2C channel, using ports SCL and SDA. Pull up resistors are wired to each of the 8 PCF8574 ports. Also, two 4.7K resistors pull-up the SCL and SDA pins.
