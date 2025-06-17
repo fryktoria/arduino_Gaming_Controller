@@ -107,7 +107,7 @@ I used as basis the PPMEncoder library by Christopher Schirner, version 0.4.0, a
 # Schematics
 The schematics for this project are in folder `./schematics`. The main board is:
 
- ![](./schematics/sheet1.png).
+ ![](./schematics/Sheet_1.png).
 
 After all the explanations above, the schematics should be self-explainable.
  - Potentiometers are wired to the Analog ports of Arduino Nano.
