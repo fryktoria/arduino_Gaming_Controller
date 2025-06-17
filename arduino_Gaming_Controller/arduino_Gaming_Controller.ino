@@ -219,8 +219,8 @@ int axisOffset[ANALOG_INPUTS_COUNT];
 // The button numbers associated with an increase of the offset, per axis
 // See matrix_keyboard.h for the assignment of buttons to button numbers
 // Axis order is {Roll/ailerons, Pitch/elevetors,  Throttle, Yaw/rudder}
-uint8_t trimButtonsIncrease[] = { 3, 2, 1, 0 };
-uint8_t trimButtonsDecrease[] = { 8, 7, 6, 5 };
+uint8_t trimButtonsIncrease[] = { BTN_TRIM_ROLL_RIGHT, BTN_TRIM_PITCH_UP, BTN_TRIM_THROTTLE_UP, BTN_TRIM_RUDDER_RIGHT };  // { 3, 2, 1, 0 };
+uint8_t trimButtonsDecrease[] = { BTN_TRIM_ROLL_LEFT, BTN_TRIM_PITCH_DOWN, BTN_TRIM_THROTTLE_DOWN, BTN_TRIM_RUDDER_LEFT };  // { 8, 7, 6, 5 };
 #define TRIMMED_AXES_COUNT sizeof(trimButtonsIncrease)
 
 // /////////////////
@@ -306,16 +306,11 @@ uint16_t calibrationArray[] = {160, 512, 855, 174, 512, 838, 174, 512, 860, 166,
 int menuIndex = 0;
 const int menuItems = 5;
 String menu[menuItems] = {"RUN", "INV", "CMID", "CAL", "STOR"};
-#define BTN_UP 15
-#define BTN_DOWN 16
-#define BTN_LEFT 17
-#define BTN_RIGHT 18
-#define BTN_INCREASE 11
-#define BTN_DECREASE 10
-#define BTN_CLEAR 12
+
 
 const int menuButtons [] = {BTN_UP, BTN_DOWN, BTN_LEFT, BTN_RIGHT, BTN_INCREASE, BTN_DECREASE, BTN_CLEAR};
-// The order of the buttons in the array above, to reference by name instead of by index
+
+// The order of the buttons in the array above to use for debouncing each button, to reference by name instead of by index
 #define BTN_UP_DBNC 0
 #define BTN_DOWN_DBNC 1
 #define BTN_LEFT_DBNC 2

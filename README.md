@@ -123,9 +123,11 @@ There are not enough pins to operate the LCD display. I used another PCF8574A, s
  - Load the sketch.
  - Configure according to your wishes the pre-processor options, as well as the user parameters.
  - Upload to the Arduino
-T
-he software version will appear briefly on the LCD, followed by a "Helo" message (well, only 4 characters are allowed...)
-A countdown counter will appear. If you press the Up, Down or Clear buttons before the counter reaches zero, the software will enter configuration mode. Otherwise, it will enter normal operation.
+
+The software version will appear briefly on the LCD, followed by a "Helo" message (well, only 4 characters are allowed...)
+After a while, the indication "CONF" and a countdown counter will appear. If you press the Up, Down or Clear buttons before the counter reaches zero, the software will enter configuration mode. Otherwise, it will enter normal operation.
+
+Normal operation is indicated by a blinkink colon symbol.
 
 ## Configuration mode - LCD
 After you enter configuration mode, you can navigate the menu options via the Up and Down keys. Press Clear to select any of the options.

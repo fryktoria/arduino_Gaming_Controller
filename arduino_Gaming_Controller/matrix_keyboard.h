@@ -74,6 +74,22 @@ code    btn
 31  22         Ele D/R
 32  23         Rudd D/R
 
-
-
 */
+
+#define BTN_TRIM_THROTTLE_UP 1
+#define BTN_TRIM_THROTTLE_DOWN 6
+#define BTN_TRIM_RUDDER_LEFT 5
+#define BTN_TRIM_RUDDER_RIGHT 0
+
+#define BTN_TRIM_PITCH_UP 2
+#define BTN_TRIM_PITCH_DOWN 7
+#define BTN_TRIM_ROLL_LEFT 8
+#define BTN_TRIM_ROLL_RIGHT 3
+
+#define BTN_UP 15
+#define BTN_DOWN 16
+#define BTN_LEFT 17
+#define BTN_RIGHT 18
+#define BTN_INCREASE 11
+#define BTN_DECREASE 10
+#define BTN_CLEAR 12
