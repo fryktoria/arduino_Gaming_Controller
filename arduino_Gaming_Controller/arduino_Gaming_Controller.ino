@@ -22,7 +22,7 @@ needs to be volatile.
 
 */
 
-#define VERSION "v1.0.1"
+#define VERSION "v1.1.1"
 
 /*
   Reads configuration data from the EEPROM.
@@ -637,6 +637,17 @@ void loop() {
 
   // and end the ibus packet
   ibus.end();
+
+  // Transmit the ibus packet to all destinations
+  for (int i = 0; i < ibus.frameLength; i++) {
+    // Write to the serial port, when there is an ibus 
+    // receiver program on the other end
+    Serial.write(ibus.buffer[i]);
+
+    // Write to other destinations, such as an HID device
+    // .....
+
+  }
 
   time = millis() - time;  // time elapsed in reading the inputs
   if (time < IBUS_UPDATE_INTERVAL)
